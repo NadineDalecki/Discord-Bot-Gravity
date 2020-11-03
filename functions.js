@@ -89,6 +89,7 @@ module.exports = {
         .setAuthor("ERROR", "https://cdn.discordapp.com/attachments/717442783794692097/733268935310442556/Untitled-1.png")
         .setDescription(error.stack);
     client.users.cache.get(process.env.OWNER).send(embed);
+    console.error(error);
   },
   Inform: function(client, answer, message) {
     if (message.guild === null) {
@@ -143,8 +144,18 @@ module.exports = {
         RolesList.hasOwnProperty(emojiId) ||
         RolesList.hasOwnProperty(reaction.emoji.name)
       ) {
+        if (emojiId == "748629381446107136"){
+          await reaction.message.guild.member(user).roles.add("748518111086379029")
+          await reaction.message.guild.member(user).roles.add("748518167105634368")
+          await reaction.message.guild.member(user).roles.add("748518189868122142")
+          await reaction.message.guild.member(user).roles.add("748518215520485407")
+          await reaction.message.guild.member(user).roles.add("748518241911177307")
+          await reaction.message.guild.member(user).roles.add("651255027469516801")
+        }
+        else {
         reaction.message.guild.member(user).roles.add(RolesList[emojiId].role);
-        reaction.message.guild.member(user).roles.add("724966510614937622")
+        reaction.message.guild.member(user).roles.add("651255027469516801")
+        }
       }
     }
   },
@@ -163,9 +174,18 @@ module.exports = {
         RolesList.hasOwnProperty(emojiId) ||
         RolesList.hasOwnProperty(reaction.emoji.name)
       ) {
-        reaction.message.guild
-          .member(user)
-          .roles.remove(RolesList[emojiId].role);
+        if (emojiId == "748629381446107136"){
+          await reaction.message.guild.member(user).roles.remove("748518111086379029")
+          await reaction.message.guild.member(user).roles.remove("748518167105634368")
+          await reaction.message.guild.member(user).roles.remove("748518189868122142")
+          await reaction.message.guild.member(user).roles.remove("748518215520485407")
+          await reaction.message.guild.member(user).roles.remove("748518241911177307")
+          await reaction.message.guild.member(user).roles.remove("651255027469516801")
+        }
+        else {
+        reaction.message.guild.member(user).roles.remove(RolesList[emojiId].role);
+        reaction.message.guild.member(user).roles.remove("651255027469516801")
+        }
       }
     }
   }
